@@ -1,0 +1,6 @@
+(1) Three files:
+
+ShoppingCart.java - Class definition
+ItemToPurchase.java - Extends Class definition
+ShoppingCartManager.java - Contains main() method
+
