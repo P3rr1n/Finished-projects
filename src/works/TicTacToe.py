@@ -30,3 +30,47 @@ def win(current_game):
         if check.count(check[col]) == len(check) and check[col] != 0:
             print(f"Player {check[0]} is the winner vertically (|)!")
             game_won = True
+
+
+
+def game_board(game_map, player=0, row=0, column=0):
+    try:
+        global played
+        if game_map[row][column] !=0:
+            print("This position is taken! Choose another")
+            return False
+        print("   0  1  2")
+        if player != 0:
+            game_map[row][column] = player
+        for count, row in enumerate(game_map):
+            print(count, row)
+        played = True
+        return game_map
+    except:
+        print("Something went wrong")
+        return False
+
+
+play = True
+player = [1, 2]
+while play:
+    game = [[0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]]
+    game_won = False
+    game = game_board(game)
+    current_player = player[0]
+    while not game_won:
+        print(f"Current player: {current_player}")
+        played = False
+        while not played:
+            column_choice = int(input("What column do you want to play (0, 1, 2): "))
+            row_choice = int(input("What row do you want to play (0, 1, 2): "))
+            game_board(game, current_player, row_choice, column_choice)
+            win(game)
+        if current_player == player[0]:
+            current_player = player[1]
+        else:
+            current_player = player[0]
+    play = int(input("Do you want to play again 0 no and 1 yes: "))
+
